@@ -138,6 +138,7 @@ const components = {
   whatsupdocker: dynamic(() => import("./whatsupdocker/component")),
   xteve: dynamic(() => import("./xteve/component")),
   zabbix: dynamic(() => import("./zabbix/component")),
+  yinuo: dynamic(() => import("./yinuo/component")),
 };
 
 export default components;

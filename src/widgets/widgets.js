@@ -130,6 +130,7 @@ import xteve from "./xteve/widget";
 import urbackup from "./urbackup/widget";
 import romm from "./romm/widget";
 import zabbix from "./zabbix/widget";
+import yinuo from "./yinuo/widget";
 
 const widgets = {
   adguard,
@@ -267,6 +268,7 @@ const widgets = {
   whatsupdocker,
   xteve,
   zabbix,
+  yinuo,
 };
 
 export default widgets;
