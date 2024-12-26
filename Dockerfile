@@ -1,6 +1,3 @@
-# syntax = docker/dockerfile:latest
-
-# Install dependencies only when needed
 FROM docker.io/node:18-alpine AS deps
 
 WORKDIR /app
@@ -16,7 +13,6 @@ RUN --mount=type=cache,id=pnpm-store,target=/root/.local/share/pnpm/store pnpm f
 
 RUN --mount=type=cache,id=pnpm-store,target=/root/.local/share/pnpm/store pnpm install -r --offline
 
-# Rebuild the source code only when needed
 FROM docker.io/node:18-alpine AS builder
 WORKDIR /app
 
@@ -32,7 +28,6 @@ RUN npm run telemetry \
  && mkdir config \
  && NEXT_PUBLIC_BUILDTIME=$BUILDTIME NEXT_PUBLIC_VERSION=$VERSION NEXT_PUBLIC_REVISION=$REVISION npm run build
 
-# Production image, copy all the files and run next
 FROM docker.io/node:18-alpine AS runner
 LABEL org.opencontainers.image.title "Homepage"
 LABEL org.opencontainers.image.description "A self-hosted services landing page, with docker and service integrations."
@@ -45,11 +40,9 @@ ENV NODE_ENV production
 
 WORKDIR /app
 
-# Copy files from context (this allows the files to copy before the builder stage is done).
 COPY --link --chown=1000:1000 package.json next.config.js ./
 COPY --link --chown=1000:1000 /public ./public/
 
-# Copy files from builder
 COPY --link --from=builder --chown=1000:1000 /app/.next/standalone ./
 COPY --link --from=builder --chown=1000:1000 /app/.next/static/ ./.next/static/
 COPY --link --chmod=755 docker-entrypoint.sh /usr/local/bin/

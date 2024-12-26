@@ -25,9 +25,9 @@ export default function Component({ service }) {
 
   return (
     <Container service={service}>
-      <Block label="总出勤天数" value={t("common.number", { value: data.WorkDays })} />
-      <Block label="总工作时长" value={t("common.number", { value: data.LateDays })} />
-      <Block label="日均工作时长" value={t("common.number", { value: data.DayAvg })} />
+      <Block label="出勤总天数" value={t("common.number", { value: data.workDays })} />
+      <Block label="工作总时长" value={t("common.number", { value: data.workHours })} />
+      <Block label="日均工作时长" value={t("common.number", { value: data.dayAvg })} />
     </Container>
   );
 }

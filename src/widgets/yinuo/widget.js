@@ -7,7 +7,7 @@ const widget =  {
 
   mappings:  {
     info:  {
-      endpoint: "api/InsPlanCycle/info?token={key}" ,
+      endpoint: "api/AttendanceRecord/latest" ,
     },
   },
 };
