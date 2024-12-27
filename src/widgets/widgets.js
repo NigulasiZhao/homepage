@@ -131,6 +131,7 @@ import urbackup from "./urbackup/widget";
 import romm from "./romm/widget";
 import zabbix from "./zabbix/widget";
 import yinuo from "./yinuo/widget";
+import gogs from "./gogs/widget";
 
 const widgets = {
   adguard,
@@ -269,6 +270,7 @@ const widgets = {
   xteve,
   zabbix,
   yinuo,
+  gogs,
 };
 
 export default widgets;
