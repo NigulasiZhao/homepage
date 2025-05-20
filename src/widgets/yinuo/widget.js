@@ -2,12 +2,16 @@ import genericProxyHandler from "utils/proxy/handlers/generic";
 
 
 const widget =  {
-  api: "{url}/{endpoint}" ,
+  api: "{url}/api/AttendanceRecord/{endpoint}?apikey=111" ,
   proxyHandler: genericProxyHandler ,
 
   mappings:  {
     info:  {
-      endpoint: "api/AttendanceRecord/latest" ,
+      endpoint: "latest" ,
+    },
+    calendar: {
+      endpoint: "calendar",
+      params: ["start", "end", "unmonitored"],
     },
   },
 };
