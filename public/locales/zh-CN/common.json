@@ -705,10 +705,10 @@
         "failed": "Failed"
     },
     "mealie": {
-        "recipes": "Recipes",
-        "users": "Users",
-        "categories": "Categories",
-        "tags": "Tags"
+        "recipes": "食谱",
+        "users": "用户",
+        "categories": "类别",
+        "tags": "标签"
     },
     "atsumeru": {
         "series": "Series",
