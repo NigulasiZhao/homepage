@@ -5,19 +5,19 @@ import useWidgetAPI from "../../../utils/proxy/use-widget-api";
 import Error from "../../../components/services/widget/error";
 
 export default function Integration({ config, params, setEvents, hideErrors = false }) {
-  const { data: yinuoData, error: yinuoError } = useWidgetAPI(config, "calendar", {
+  const { data: gogsData, error: gogsError } = useWidgetAPI(config, "calendar", {
     ...params,
     ...(config?.params ?? {}),
   });
 
   useEffect(() => {
-    if (!yinuoData || yinuoError) {
+    if (!gogsData || gogsError) {
       return;
     }
 
     const eventsToAdd = {};
 
-    yinuoData?.forEach((event) => {
+    gogsData?.forEach((event) => {
       const title = `${event.title} - ${event.rownum}`;
 
       eventsToAdd[title] = {
@@ -25,13 +25,13 @@ export default function Integration({ config, params, setEvents, hideErrors = fa
         date: DateTime.fromISO(event.airDateUtc),
         color: config?.color ?? "teal",
         isCompleted: event.hasFile,
-        additional: `${event.workhours}`,
+        additional: `${event.message}`,
       };
     });
 
     setEvents((prevEvents) => ({ ...prevEvents, ...eventsToAdd }));
-  }, [yinuoData, yinuoError, config, setEvents]);
+  }, [gogsData, gogsError, config, setEvents]);
 
-  const error = yinuoError ?? yinuoData?.error;
+  const error = gogsError ?? gogsData?.error;
   return error && !hideErrors && <Error error={{ message: `${config.type}: ${error.message ?? error}` }} />;
 }
