@@ -19,7 +19,7 @@ export default function Agenda({ service, colorVariants, events, showDate }) {
         events[eventKey].date?.startOf("day").ts,
     )
     .map((eventKey) => events[eventKey])
-    .sort((a, b) => a.date - b.date)
+    .sort((a, b) => b.date - a.date)
     .slice(0, widget?.maxEvents ?? 10);
 
   if (!eventsArray.length) {

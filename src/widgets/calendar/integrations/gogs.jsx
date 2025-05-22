@@ -23,7 +23,7 @@ export default function Integration({ config, params, setEvents, hideErrors = fa
       eventsToAdd[title] = {
         title: `${event.title}`,
         date: DateTime.fromISO(event.airDateUtc),
-        color: config?.color ?? "teal",
+        color: event?.color ?? "teal",
         isCompleted: event.hasFile,
         additional: `${event.message}`,
       };

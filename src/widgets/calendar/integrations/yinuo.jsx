@@ -25,7 +25,7 @@ export default function Integration({ config, params, setEvents, hideErrors = fa
         date: DateTime.fromISO(event.airDateUtc),
         color: config?.color ?? "teal",
         isCompleted: event.hasFile,
-        additional: `${event.workhours}`,
+        additional: `${event.message}`,
       };
     });
 
